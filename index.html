@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>urLibrary</title>
+</head>
+<body>
+    <div class="header">
+        <h1><img src="favicon-32x32.png" alt="">urLibrary</h1>
+        <div class="headerButtons">
+            <input type="search" id="searchBox" placeholder="Search Your Book">
+            <button id="searchButton"> <i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            <button id="createNewBook" onclick="displayBookForm()">Add BOOK</button>
+        </div>
+    </div>
+
+    <div class="filtering">
+        <select id="view">
+            <option value="list" selected>List View</option>
+            <option value="table">Table View</option>
+        </select>
+        <select id="sort">
+            <option value="All" selected>All</option>
+            <option value="Read">Books Read</option>
+            <option value="Unread">Books Unread</option>
+        </select>
+    </div>
+
+    <div id="addNewBookForm">
+        <label for="bookName">Enter Book Name:</label>
+        <input type="text" placeholder="Book Name" id="bookName" required>
+        <label for="author">Author:</label>
+        <input type="text" id="author" placeholder="Author">
+        <label for="genre">Genre:</label>
+        <select id="genre">
+            <option value="">Select Genre</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+            <option value="Science">Science</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Biography">Biography</option>
+        </select>
+        <label for="status">Status:</label>
+        <select id="status">
+            <option value="Unread">Unread</option>
+            <option value="Read">Read</option>
+        </select>
+        <label for="cover">Upload Cover Image:</label>
+        <input type="file" id="cover" accept="image/*">
+        <button onclick="addBook()" type="submit">Create Book</button>
+    </div>
+
+    <div id="bookList"></div>
+    <script defer src="app.js"></script>
+</body>
+</html>
+
