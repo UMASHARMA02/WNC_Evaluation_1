@@ -28,16 +28,15 @@ function addBook() {
         return;
     }
 
-    // If no cover file is uploaded, use the default image 'book.jpeg'
+    // when no cover file is uploaded
     const cover = coverFile ? URL.createObjectURL(coverFile) : "book.jpeg";
     const book = new Book(title, author, status, genre, cover);
 
     if (editIndex !== null) {
-        // Edit existing book
+        // existing book
         bookArray[editIndex] = book;
         editIndex = null; // Reset edit index
     } else {
-        // Add new book
         bookArray.push(book);
     }
 
