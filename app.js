@@ -34,6 +34,7 @@ class Book {
  */
 function displayBookForm() {
     document.getElementById("addNewBookForm").style.display = "flex";
+    document.getElementById("bookList").style.display = "none";
 }
 
 /**
@@ -41,6 +42,8 @@ function displayBookForm() {
  * @returns alert when no title of the book is added
  */
 function addBook() {
+    document.getElementById("bookList").style.display = "flex";
+    
     const title = document.getElementById("bookName").value.trim();
     const author = document.getElementById("author").value.trim();
     const status = document.getElementById("status").value;
