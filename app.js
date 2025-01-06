@@ -1,7 +1,7 @@
 /**
  * global varriable to store all the objects of book created
  */
-let bookArray =JSON.parse(localStorage.getItem("bookArray"))||[];
+let bookArray = JSON.parse(localStorage.getItem("bookArray"))||[];
 
 /**
  * global variable to check if book created is new one or being edited
@@ -38,12 +38,13 @@ function displayBookForm() {
 }
 
 /**
- * function executed on clicking CREATE button to add new book object in bookArray and storing it Local storage and displaying the list of book added
+ * function executed on clicking CREATE button to add new book object in bookArray (or when CREATE is clicked to edit book) and storing it Local storage and displaying the list of book added
  * @returns alert when no title of the book is added
  */
 function addBook() {
+
     document.getElementById("bookList").style.display = "flex";
-    
+
     const title = document.getElementById("bookName").value.trim();
     const author = document.getElementById("author").value.trim();
     const status = document.getElementById("status").value;
@@ -90,6 +91,7 @@ function renderBooks(filterStatus = "All", searchQuery = "") {
     const bookList = document.getElementById("bookList");
     bookList.innerHTML = "";
 
+    // const arr = JSON.parse(localStorage.getItem("bookArray")); 
     /**
      * new array of books based on filtering condition
      */
@@ -127,6 +129,7 @@ function renderBooks(filterStatus = "All", searchQuery = "") {
  */
 function editBook(index) {
     const book = bookArray[index];
+    // localStorage.setItem("bookArray", JSON.stringify(bookArray));
 
     //accessing inputs element from HTML and setting their value to previous values by acessing that book object from bookArray
     document.getElementById("bookName").value = book.title;
@@ -184,14 +187,4 @@ document.getElementById("sort").addEventListener("change", (e) => {
     renderBooks(e.target.value);
 });
 
-/**
- * to reset everything on reloading page
- */
-window.onload = function () {
-    // Clear localStorage on page reload
-    localStorage.clear();
-    // Reset the bookArray
-    bookArray = []; 
-    // Render an empty list
-    renderBooks(); 
-}; 
+window.onload = renderBooks();
