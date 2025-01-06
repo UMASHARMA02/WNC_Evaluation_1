@@ -1,7 +1,7 @@
 /**
  * global varriable to store all the objects of book created
  */
-let bookArray = [];
+let bookArray =JSON.parse(localStorage.getItem("bookArray"))||[];
 
 /**
  * global variable to check if book created is new one or being edited
